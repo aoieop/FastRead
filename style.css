@@ -1,0 +1,17 @@
+#tex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150px;
+}
+
+
+
+
+#inp{
+    height: 300px;
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
