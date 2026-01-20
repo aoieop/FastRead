@@ -18,6 +18,7 @@
     }
 
     function turnOn(){
+        turnOff();
         timer = setInterval(nextWord, speed);
     }
 

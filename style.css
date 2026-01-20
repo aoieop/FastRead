@@ -8,9 +8,9 @@
 
 
 
-#inp{
+#input-area, #inp{
     height: 300px;
-    width: 1200px;
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
