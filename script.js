@@ -1,10 +1,11 @@
 {
-    const input = document.getElementById("inp");
-    const output = document.getElementById("tex");
+    const input = document.getElementById("input");
+    const output = document.getElementById("text");
     const start = document.getElementById("start");
     const stop = document.getElementById("stop");
-    const peem = document.getElementById("wpm");
+    const wpm = document.getElementById("wpm");
     const slide = document.getElementById("wpm-slider");
+    const test = document.getElementById("test");
 
     var inp = "";
     var word = 0;
@@ -18,28 +19,38 @@
             output.textContent = words[word];
     }
 
+    function setSpeed(x){
+        speed = 60000/x
+    }
+
     function turnOn(){
         turnOff();
         timer = setInterval(nextWord, speed);
     }
 
-    slider.oninput = function() {
-        turnOff();
-        peem.value = this.value;
-    }
-
-    slider.addEventListener("click", turnOff);
-
     function turnOff(){
         clearInterval(timer);
     }
 
-    peem.addEventListener("click", turnOff);
-    peem.addEventListener("input", ()=>{
+    //Slider
+    slide.oninput = function() {
         turnOff();
-        speed = 60000/parseInt(peem.value);
+        wpm.value = this.value;
+        setSpeed(slide.value);
+    }
+
+    slide.addEventListener("click", turnOff);
+
+    
+    //WPM Number field
+    wpm.addEventListener("click", turnOff);
+    wpm.addEventListener("input", ()=>{
+        turnOff();
+        slide.value = wpm.value;
+        setSpeed(wpm.value);
     })
     
+    //Text Area
     input.addEventListener("click", turnOff);
 
     
@@ -52,7 +63,7 @@
     });
 
     
-
+    //Buttons
     start.addEventListener("click", turnOn);
     stop.addEventListener("click", turnOff);
 

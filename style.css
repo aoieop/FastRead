@@ -1,17 +1,33 @@
-#tex{
+#text{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 150px;
 }
 
+#text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%
+}
 
 
 
-#input-area, #inp{
+
+#input-area, #input{
     height: 300px;
     width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#controls-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wpm{
+    width: 40px;
 }
