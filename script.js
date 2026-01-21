@@ -14,14 +14,14 @@ let word = 0;
 let words;
 let on = false;
 let timer;
-let speed = 60000/120;
+let speed = 60000 / 120;
 let prevPlayback = "";
 let feed = "";
 
 function nextWord() {
 
     document.getElementById(word).style.backgroundColor = "";
-    document.getElementById(word + 1).style.backgroundColor = "aquamarine";
+    document.getElementById(word + 1).style.backgroundColor = "Turquoise";
 
     word++;
 
@@ -49,18 +49,18 @@ function outputFormat() {
     }
 }
 
-function set() {
+function set(x = 0) {
     document.getElementById(word).style.backgroundColor = "";
     playPause.value = "on";
     turnOff();
     playPause.innerHTML = "play";
-    word = 0;
+    word = x;
     inp = rawInp;
     words = parse(rawInp);
     prevPlayback = "";
     outputFormat();
     playback.innerHTML = feed;
-    document.getElementById(word).style.backgroundColor = "aquamarine";
+    document.getElementById(word).style.backgroundColor = "Turquoise";
 
 }
 
@@ -87,7 +87,7 @@ function parse(text) {
     feed = "";
     inp = inp.substring(inp.indexOf(tokens[0]));
     for (let id in tokens) {
-        feed += "<span id = '" + id + "'>" + tokens[parseInt(id)] + "</span>";
+        feed += "<span onclick = 'jumpBack(this.id)' onmouseleave = 'recolor(this,1)' onmouseover = 'recolor(this, 0)' id = '" + id + "'>" + tokens[parseInt(id)] + "</span>";
         inp = inp.substring(tokens[parseInt(id)].length);
         feed += inp.substring(0, inp.indexOf(tokens[parseInt(id) + 1]));
         inp = inp.substring(inp.indexOf(tokens[parseInt(id) + 1]));
@@ -127,7 +127,7 @@ input.addEventListener("input", () => {
     words = parse(inp);
     playback.innerHTML = feed;
     outputFormat();
-    document.getElementById(word).style.backgroundColor = "aquamarine";
+    document.getElementById(word).style.backgroundColor = "Turquoise";
 
 });
 
@@ -149,5 +149,22 @@ restart.addEventListener("click", () => {
     set();
 })
 
+
+//Playback
+
+function recolor(obj,mode){
+    if(mode == 0){
+        return obj.style.backgroundColor = "PaleTurquoise";
+    } else if(parseInt(obj.id)==word){
+        return obj.style.backgroundColor = "Turquoise"
+    }
+    else{
+        return obj.style.backgroundColor = "";
+    }
+}
+
+function jumpBack(spanId){
+    set(parseInt(spanId));
+}
 
 
