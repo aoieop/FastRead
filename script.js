@@ -50,7 +50,7 @@
     }
 
     function turnOn() {
-        turnOff();
+        clearInterval(timer)
         timer = setInterval(nextWord, speed);
     }
 
@@ -119,9 +119,7 @@
             turnOn();
             playPause.innerHTML = "pause";
         } else {
-            playPause.value = "on";
             turnOff();
-            playPause.innerHTML = "play";
         }
     });
 
