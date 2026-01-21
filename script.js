@@ -105,7 +105,7 @@
         words = parse(inp);
         playback.innerHTML = feed;
         output.textContent = words[word];
-        document.getElementById(word).style.backgroundColor = "";
+        document.getElementById(word).style.backgroundColor = "aquamarine";
 
     });
 
