@@ -14,7 +14,7 @@ let word = 0;
 let words;
 let on = false;
 let timer;
-let speed = 60000/500;
+let speed = 60000/120;
 let prevPlayback = "";
 let feed = "";
 
