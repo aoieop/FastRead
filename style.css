@@ -12,6 +12,19 @@
     height: 25%
 }
 
+#playback-container{
+    height:15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#playback{
+    width: 50%;
+    overflow-y: auto;
+    height: 100px;
+}
+
 
 
 
