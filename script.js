@@ -19,6 +19,7 @@
 
     function nextWord() {
         
+        console.log(word);
         document.getElementById(word).style.backgroundColor = "";
         document.getElementById(word+1).style.backgroundColor = "aquamarine";
 
@@ -35,15 +36,11 @@
         playPause.innerHTML = "play";
         word = 0;
         inp = rawInp;
+        words = parse(rawInp);
         prevPlayback = "";
         output.textContent = words[word];
-        let firstInd = inp.indexOf(words[word]);
-
-        playback.innerHTML = prevPlayback
-            + "<span style = 'background-color: aquamarine'>"
-            + words[word]
-            + "</span>"
-            + inp.substring(words[word].length + firstInd, inp.length);
+        playback.innerHTML = feed;
+        document.getElementById(word).style.backgroundColor = "aquamarine";
 
     }
 
@@ -108,6 +105,8 @@
         words = parse(inp);
         playback.innerHTML = feed;
         output.textContent = words[word];
+        document.getElementById(word).style.backgroundColor = "";
+
     });
 
 
