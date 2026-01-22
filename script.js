@@ -98,7 +98,7 @@ function parse(text) {
     feed = "";
     inp = inp.substring(inp.indexOf(tokens[0]));
     for (let id in tokens) {
-        feed += "<span onclick = 'jumpBack(this.id)' onmouseleave = 'recolor(this,1)' onmouseover = 'recolor(this, 0)' id = '" + id + "'>" + tokens[parseInt(id)] + "</span>";
+        feed += "<span onclick = 'jumpBack(this.id)' onmouseleave = 'recolor(this,1)' onmouseover = 'recolor(this, 0)'  class = 'playbackText' id = '" + id + "'>" + tokens[parseInt(id)] + "</span>";
         inp = inp.substring(tokens[parseInt(id)].length);
         feed += inp.substring(0, inp.indexOf(tokens[parseInt(id) + 1]));
         inp = inp.substring(inp.indexOf(tokens[parseInt(id) + 1]));
