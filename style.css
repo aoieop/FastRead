@@ -16,6 +16,7 @@
     width: 50%;
     overflow-y: auto;
     height: 100px;
+    font-size: 25;
 }
 
 #text-container {

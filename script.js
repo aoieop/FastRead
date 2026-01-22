@@ -17,13 +17,25 @@ let timer;
 let speed = 60000 / 120;
 let prevPlayback = "";
 let feed = "";
+let playbackPos = [0];
+let line = -1;
 
 function nextWord() {
 
     document.getElementById(word).style.backgroundColor = "";
     document.getElementById(word + 1).style.backgroundColor = "Turquoise";
+    let rect = document.getElementById(word).getBoundingClientRect();
 
     word++;
+
+    playbackPos.push(rect.top);
+    if (playbackPos[word] != playbackPos[word - 1]) {
+        line++;
+        if (line > 2) {
+            window.location.replace("#" + word);
+        }
+    }
+
 
     outputFormat();
 
@@ -32,7 +44,6 @@ function nextWord() {
 
 function outputFormat() {
     let out = words[word]
-    console.log(out);
     if (out.length == 1) {
         Loutput.innerHTML = "";
         Coutput.innerHTML = out;
@@ -152,18 +163,18 @@ restart.addEventListener("click", () => {
 
 //Playback
 
-function recolor(obj,mode){
-    if(mode == 0){
+function recolor(obj, mode) {
+    if (mode == 0) {
         return obj.style.backgroundColor = "PaleTurquoise";
-    } else if(parseInt(obj.id)==word){
+    } else if (parseInt(obj.id) == word) {
         return obj.style.backgroundColor = "Turquoise"
     }
-    else{
+    else {
         return obj.style.backgroundColor = "";
     }
 }
 
-function jumpBack(spanId){
+function jumpBack(spanId) {
     set(parseInt(spanId));
 }
 
