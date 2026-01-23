@@ -81,6 +81,17 @@ function setSpeed(x) {
     speed = 60000 / x
 }
 
+function toggleOn() {
+    let playState = playPause.value;
+    if (playState === "on") {
+        playPause.value = "off";
+        turnOn();
+        playPause.innerHTML = "pause";
+    } else {
+        turnOff();
+    }
+}
+
 function turnOn() {
     clearInterval(timer)
     timer = setInterval(nextWord, speed);
@@ -145,16 +156,7 @@ input.addEventListener("input", () => {
 
 //Buttons
 
-playPause.addEventListener("click", () => {
-    let playState = playPause.value;
-    if (playState === "on") {
-        playPause.value = "off";
-        turnOn();
-        playPause.innerHTML = "pause";
-    } else {
-        turnOff();
-    }
-});
+playPause.addEventListener("click", toggleOn);
 
 restart.addEventListener("click", () => {
     set();
@@ -177,5 +179,15 @@ function recolor(obj, mode) {
 function jumpBack(spanId) {
     set(parseInt(spanId));
 }
+
+//Page Listeners
+
+document.addEventListener("keyup", (a) => {
+    
+    if (a.code === "Space") {
+        toggleOn();
+    }
+
+});
 
 
