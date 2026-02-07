@@ -10,5 +10,4 @@ Website for fast read
 * Dynamic Speed
 * Fix Regex
 * UI Customization
-* Default text
-* Blur when playing
+* Fix space button glitch

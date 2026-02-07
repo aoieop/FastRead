@@ -64,12 +64,26 @@
 
 
 #input-area,
-#input {
+#input,
+#text-blur {
     height: 300px;
     width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+#input {
+    position: absolute;
+    z-index: -1;
+    filter:blur(3px);
+}
+
+#text-blur {
+    position: absolute;
+    z-index: 2;
+
 }
 
 #controls-container {

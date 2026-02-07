@@ -7,6 +7,7 @@ const slide = document.getElementById("wpm-slider");
 const playback = document.getElementById("playback");
 const playPause = document.getElementById("play-pause");
 const restart = document.getElementById("restart");
+const blurBox = document.getElementById("text-blur");
 
 let inp = "";
 let rawInp = "";
@@ -103,6 +104,16 @@ function turnOff() {
     clearInterval(timer);
 }
 
+function loadText(){
+    word = 0;
+    inp = input.value;
+    rawInp = input.value;
+    words = parse(inp);
+    playback.innerHTML = feed;
+    outputFormat();
+    document.getElementById(word).style.backgroundColor = "Turquoise";
+}
+
 function parse(text) {
     let tokens = text.split(/\W\s*\n*/);
     tokens = tokens.filter((i) => { return i != "" });
@@ -117,6 +128,19 @@ function parse(text) {
     feed += inp;
     console.log(tokens);
     return tokens;
+}
+
+//Window
+window.onload = function() {
+    loadText();
+}
+
+//Blur box
+blurBox.onmouseover = function() {
+    input.style.filter = "blur(0px)";
+    blurBox.style.visibility = "hidden";
+    blurBox.style.zIndex = "-300";
+    input.style.zIndex = "1";
 }
 
 //Slider
@@ -140,16 +164,13 @@ wpm.addEventListener("input", () => {
 //Text Area
 input.addEventListener("click", turnOff);
 
+input.addEventListener("mousover", ()=>{
+    input.style.filter = "blur(0px)";
+})
 
 input.addEventListener("input", () => {
 
-    word = 0;
-    inp = input.value;
-    rawInp = input.value;
-    words = parse(inp);
-    playback.innerHTML = feed;
-    outputFormat();
-    document.getElementById(word).style.backgroundColor = "Turquoise";
+    loadText();
 
 });
 
